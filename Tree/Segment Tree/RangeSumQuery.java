@@ -76,8 +76,9 @@ class NumArray {
         if (i > j) return 0;
         if (i == segStart && j == segEnd) return segTree[nodeIndex];
         int mid = segStart + (segEnd - segStart) / 2;
-        return querySum(i, Math.min(mid, j), nodeIndex * 2 + 1, segStart, mid) + 
-                querySum(Math.max(mid + 1, i), j, nodeIndex * 2 + 2, mid + 1, segEnd);
+		int left = querySum(i, Math.min(mid, j), nodeIndex * 2 + 1, segStart, mid);
+		int right = querySum(Math.max(mid + 1, i), j, nodeIndex * 2 + 2, mid + 1, segEnd);
+        return left+ right;           
     }
     
 }
